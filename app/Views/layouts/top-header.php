@@ -1,0 +1,364 @@
+<header class="top-header">
+    <div class="top-header__inner">
+        <nav class="top-header__breadcrumb" aria-label="Breadcrumb">
+            <a href="#">Dashboard</a>
+            <span class="top-header__breadcrumb-separator">/</span>
+            <span class="top-header__breadcrumb-current">Overview</span>
+        </nav>
+
+        <form class="top-header__search" role="search">
+            <i class="fa-solid fa-magnifying-glass top-header__search-icon" aria-hidden="true"></i>
+            <input
+                class="top-header__search-input"
+                type="search"
+                placeholder="Search application, borrower, NIK/NIB, contract number..."
+                aria-label="Search application">
+        </form>
+
+        <div class="top-header__actions">
+            <button class="top-header__filter" type="button">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <span class="top-header__filter-label">All Branches</span>
+                <i class="fa-solid fa-chevron-down top-header__chevron" aria-hidden="true"></i>
+            </button>
+
+            <button class="top-header__filter" type="button">
+                <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+                <span class="top-header__filter-label">This Month</span>
+                <i class="fa-solid fa-chevron-down top-header__chevron" aria-hidden="true"></i>
+            </button>
+
+            <button
+                class="top-header__notification"
+                id="notificationTrigger"
+                type="button"
+                aria-label="Open notifications"
+                aria-haspopup="dialog"
+                aria-controls="notificationModal"
+                aria-expanded="false">
+                <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                <span class="top-header__notification-badge" id="notificationHeaderBadge">5</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Notification drawer modal -->
+<div class="notification-modal" id="notificationModal" hidden>
+    <button class="notification-modal__backdrop" type="button" aria-label="Close notifications"></button>
+
+    <aside
+        class="notification-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="notificationTitle"
+        tabindex="-1">
+
+        <div class="notification-drawer__header">
+            <div class="notification-drawer__title-row">
+                <div class="notification-drawer__title-group">
+                    <h2 id="notificationTitle">Notifications</h2>
+                    <span class="notification-unread-badge" id="notificationUnreadBadge">5 unread</span>
+                </div>
+
+                <button class="notification-mark-read" id="notificationMarkRead" type="button">
+                    Mark all as read
+                </button>
+            </div>
+
+            <div class="notification-tabs" role="tablist" aria-label="Notification filters">
+                <button class="notification-tab is-active" type="button" role="tab" aria-selected="true" data-notification-filter="all">All</button>
+                <button class="notification-tab" type="button" role="tab" aria-selected="false" data-notification-filter="unread">Unread</button>
+                <button class="notification-tab" type="button" role="tab" aria-selected="false" data-notification-filter="mentions">Mentions</button>
+            </div>
+        </div>
+
+        <div class="notification-drawer__body" id="notificationList">
+            <article class="notification-item notification-item--info is-unread" data-notification-type="unread">
+                <span class="notification-item__rail" aria-hidden="true"></span>
+                <div class="notification-item__icon">
+                    <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                </div>
+                <div class="notification-item__content">
+                    <p class="notification-item__message">Application LOS-JKT-202609-0142 has been assigned to you.</p>
+                    <div class="notification-item__meta">
+                        <span>2 minutes ago</span><span>•</span><span>System</span>
+                    </div>
+                    <button class="notification-item__action notification-item__action--primary" type="button">Open Application</button>
+                </div>
+            </article>
+
+            <article class="notification-item notification-item--info is-unread" data-notification-type="unread">
+                <span class="notification-item__rail" aria-hidden="true"></span>
+                <div class="notification-item__icon">
+                    <i class="fa-regular fa-circle-check" aria-hidden="true"></i>
+                </div>
+                <div class="notification-item__content">
+                    <p class="notification-item__message">Appraisal for PT Sinar Abadi has been completed. Market Value: Rp 1.50 B, Liquidation Value: Rp 1.15 B.</p>
+                    <div class="notification-item__meta">
+                        <span>45 minutes ago</span><span>•</span><span>Rudi Hermawan (Appraisal Staff)</span>
+                    </div>
+                    <button class="notification-item__action" type="button">View Appraisal</button>
+                </div>
+            </article>
+
+            <article class="notification-item notification-item--warning is-unread" data-notification-type="unread">
+                <span class="notification-item__rail" aria-hidden="true"></span>
+                <div class="notification-item__icon">
+                    <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                </div>
+                <div class="notification-item__content">
+                    <p class="notification-item__message">Application LOS-BDG-202609-0138 will exceed SLA in 4 hours. Current stage: Credit Analysis.</p>
+                    <div class="notification-item__meta">
+                        <span>1 hour ago</span><span>•</span><span>System — SLA Alert</span>
+                    </div>
+                    <button class="notification-item__action" type="button">Open Application</button>
+                </div>
+            </article>
+
+            <article class="notification-item notification-item--revision is-unread" data-notification-type="mention">
+                <span class="notification-item__rail" aria-hidden="true"></span>
+                <div class="notification-item__icon">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </div>
+                <div class="notification-item__content">
+                    <p class="notification-item__message">Committee returned application LOS-JKT-202609-0131 for revision. Reason: Additional collateral analysis required.</p>
+                    <div class="notification-item__meta">
+                        <span>2 hours ago</span><span>•</span><span>Budi Hartono (VP Business)</span>
+                    </div>
+                    <button class="notification-item__action" type="button">View Details</button>
+                </div>
+            </article>
+
+            <article class="notification-item notification-item--danger is-unread" data-notification-type="unread">
+                <span class="notification-item__rail" aria-hidden="true"></span>
+                <div class="notification-item__icon">
+                    <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+                </div>
+                <div class="notification-item__content">
+                    <p class="notification-item__message">Payment for contract CTR-JKT-2026-0098 is overdue by 7 days. Borrower: CV Maju Bersama. Outstanding: Rp 15,800,000.</p>
+                    <div class="notification-item__meta">
+                        <span>3 hours ago</span><span>•</span><span>System — Collection Alert</span>
+                    </div>
+                    <button class="notification-item__action" type="button">View Contract</button>
+                </div>
+            </article>
+
+            <article class="notification-item notification-item--neutral" data-notification-type="read">
+                <span class="notification-item__rail" aria-hidden="true"></span>
+                <div class="notification-item__icon">
+                    <i class="fa-regular fa-file-lines" aria-hidden="true"></i>
+                </div>
+                <div class="notification-item__content">
+                    <p class="notification-item__message">Application LOS-SBY-202609-0127 has been submitted to Committee L1.</p>
+                    <div class="notification-item__meta">
+                        <span>Yesterday</span><span>•</span><span>System</span>
+                    </div>
+                    <button class="notification-item__action" type="button">View Application</button>
+                </div>
+            </article>
+
+            <article class="notification-item notification-item--neutral" data-notification-type="mention">
+                <span class="notification-item__rail" aria-hidden="true"></span>
+                <div class="notification-item__icon">
+                    <i class="fa-regular fa-comment-dots" aria-hidden="true"></i>
+                </div>
+                <div class="notification-item__content">
+                    <p class="notification-item__message">You were mentioned in a note for application LOS-JKT-202609-0098.</p>
+                    <div class="notification-item__meta">
+                        <span>Yesterday</span><span>•</span><span>Rina S.</span>
+                    </div>
+                    <button class="notification-item__action" type="button">View Mention</button>
+                </div>
+            </article>
+
+            <div class="notification-empty" id="notificationEmpty" hidden>
+                <div class="notification-empty__icon">
+                    <i class="fa-regular fa-bell-slash" aria-hidden="true"></i>
+                </div>
+                <strong>No notifications here</strong>
+                <span>You're all caught up for this filter.</span>
+            </div>
+        </div>
+
+        <div class="notification-drawer__footer">
+            <button class="notification-footer__link" type="button">View All Notifications</button>
+            <span class="notification-footer__separator" aria-hidden="true"></span>
+            <button class="notification-footer__link" type="button">Notification Settings</button>
+        </div>
+    </aside>
+</div>
+
+<script>
+    (function () {
+        const trigger = document.getElementById('notificationTrigger');
+        const modal = document.getElementById('notificationModal');
+
+        if (!trigger || !modal) return;
+
+        const backdrop = modal.querySelector('.notification-modal__backdrop');
+        const drawer = modal.querySelector('.notification-drawer');
+        const tabs = modal.querySelectorAll('[data-notification-filter]');
+        const items = modal.querySelectorAll('.notification-item');
+        const markRead = document.getElementById('notificationMarkRead');
+        const headerBadge = document.getElementById('notificationHeaderBadge');
+        const unreadBadge = document.getElementById('notificationUnreadBadge');
+        const emptyState = document.getElementById('notificationEmpty');
+        const animationDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420;
+        let closeTimer = null;
+        let activeFilter = 'all';
+
+        function getUnreadCount() {
+            return Array.from(items).filter(function (item) {
+                return item.classList.contains('is-unread');
+            }).length;
+        }
+
+        function syncUnreadUI() {
+            const unreadCount = getUnreadCount();
+
+            if (headerBadge) {
+                headerBadge.textContent = unreadCount;
+                headerBadge.hidden = unreadCount === 0;
+            }
+
+            if (unreadBadge) {
+                unreadBadge.textContent = unreadCount + ' unread';
+                unreadBadge.classList.toggle('is-empty', unreadCount === 0);
+            }
+
+            if (markRead) {
+                markRead.disabled = unreadCount === 0;
+            }
+        }
+
+        function applyFilter(filter) {
+            activeFilter = filter;
+            let visibleCount = 0;
+
+            items.forEach(function (item) {
+                let visible = true;
+                if (filter === 'unread') visible = item.classList.contains('is-unread');
+                if (filter === 'mentions') visible = item.dataset.notificationType === 'mention';
+                item.hidden = !visible;
+                if (visible) visibleCount += 1;
+            });
+
+            if (emptyState) emptyState.hidden = visibleCount !== 0;
+        }
+
+        function openNotifications() {
+            if (closeTimer) {
+                window.clearTimeout(closeTimer);
+                closeTimer = null;
+            }
+
+            modal.hidden = false;
+            document.body.classList.add('notification-drawer-open');
+            trigger.setAttribute('aria-expanded', 'true');
+
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    modal.classList.add('is-open');
+                    if (drawer) drawer.focus({ preventScroll: true });
+                });
+            });
+        }
+
+        function closeNotifications() {
+            modal.classList.remove('is-open');
+            document.body.classList.remove('notification-drawer-open');
+            trigger.setAttribute('aria-expanded', 'false');
+
+            closeTimer = window.setTimeout(function () {
+                if (!modal.classList.contains('is-open')) {
+                    modal.hidden = true;
+                    trigger.focus({ preventScroll: true });
+                }
+            }, animationDuration);
+        }
+
+        trigger.addEventListener('click', function () {
+            if (modal.hidden || !modal.classList.contains('is-open')) {
+                openNotifications();
+            } else {
+                closeNotifications();
+            }
+        });
+
+        backdrop.addEventListener('click', closeNotifications);
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && !modal.hidden) {
+                closeNotifications();
+                return;
+            }
+
+            if (event.key === 'Tab' && !modal.hidden && drawer) {
+                const focusable = Array.from(drawer.querySelectorAll(
+                    'button:not([disabled]):not([hidden]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+                )).filter(function (element) {
+                    return !element.closest('[hidden]');
+                });
+
+                if (!focusable.length) {
+                    event.preventDefault();
+                    drawer.focus();
+                    return;
+                }
+
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            }
+        });
+
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                const filter = tab.dataset.notificationFilter;
+
+                tabs.forEach(function (item) {
+                    const isActive = item === tab;
+                    item.classList.toggle('is-active', isActive);
+                    item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+
+                applyFilter(filter);
+            });
+        });
+
+        if (markRead) {
+            markRead.addEventListener('click', function () {
+                items.forEach(function (item) {
+                    item.classList.remove('is-unread');
+                });
+
+                syncUnreadUI();
+                applyFilter(activeFilter);
+            });
+        }
+
+        items.forEach(function (item) {
+            const action = item.querySelector('.notification-item__action');
+            if (!action) return;
+
+            action.addEventListener('click', function () {
+                if (item.classList.contains('is-unread')) {
+                    item.classList.remove('is-unread');
+                    syncUnreadUI();
+                    applyFilter(activeFilter);
+                }
+            });
+        });
+
+        syncUnreadUI();
+        applyFilter(activeFilter);
+    })();
+</script>
