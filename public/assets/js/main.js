@@ -175,6 +175,119 @@
     applyFilter(activeFilter);
 })();
 
+// Shared drag-to-resize behavior for user-facing data tables.
+(function () {
+    const tableSelector = [
+        '.table-wrap table',
+        '.priority-tasks__table-wrap table',
+        '.sla-table-wrap table',
+        '.recent-applications__table-wrap table'
+    ].join(',');
+    const minColumnWidth = 64;
+
+    function initializeResizableTables() {
+        document.querySelectorAll(tableSelector).forEach(function (table, tableIndex) {
+            const headerRow = table.tHead && table.tHead.rows[0];
+            if (!headerRow || table.dataset.resizableReady === 'true') return;
+
+            const headers = Array.from(headerRow.cells);
+            if (headers.length < 2 || headers.some(function (header) { return header.colSpan > 1; })) return;
+
+            table.dataset.resizableReady = 'true';
+            const pageKey = 'table-column-widths:' + window.location.pathname + ':' + tableIndex;
+            let savedWidths = {};
+            try {
+                savedWidths = JSON.parse(window.localStorage.getItem(pageKey) || '{}');
+            } catch (error) {
+                savedWidths = {};
+            }
+
+            const columns = document.createElement('colgroup');
+            const widths = headers.map(function (header, index) {
+                const savedWidth = Number(savedWidths[index]);
+                return Number.isFinite(savedWidth) && savedWidth >= minColumnWidth
+                    ? savedWidth
+                    : Math.max(minColumnWidth, Math.round(header.getBoundingClientRect().width));
+            });
+
+            widths.forEach(function (width) {
+                const column = document.createElement('col');
+                column.style.width = width + 'px';
+                columns.appendChild(column);
+            });
+            table.insertBefore(columns, table.firstChild);
+            table.style.tableLayout = 'fixed';
+
+            function applyWidths() {
+                const totalWidth = widths.reduce(function (sum, width) { return sum + width; }, 0);
+                Array.from(columns.children).forEach(function (column, index) {
+                    column.style.width = widths[index] + 'px';
+                });
+                table.style.width = totalWidth + 'px';
+            }
+
+            headers.forEach(function (header, index) {
+                header.classList.add('table-resizable-header');
+                const handle = document.createElement('span');
+                handle.className = 'table-column-resizer';
+                handle.setAttribute('role', 'separator');
+                handle.setAttribute('aria-orientation', 'vertical');
+                handle.setAttribute('aria-label', 'Resize ' + header.textContent.trim() + ' column');
+                handle.setAttribute('tabindex', '0');
+                header.appendChild(handle);
+
+                function resizeBy(delta) {
+                    const nextWidth = Math.max(minColumnWidth, widths[index] + delta);
+                    widths[index] = nextWidth;
+                    applyWidths();
+                    try {
+                        window.localStorage.setItem(pageKey, JSON.stringify(widths));
+                    } catch (error) {
+                        // Keep resizing available when browser storage is disabled.
+                    }
+                }
+
+                handle.addEventListener('pointerdown', function (event) {
+                    event.preventDefault();
+                    handle.classList.add('is-dragging');
+                    handle.setPointerCapture(event.pointerId);
+                    let previousX = event.clientX;
+
+                    function onPointerMove(moveEvent) {
+                        resizeBy(moveEvent.clientX - previousX);
+                        previousX = moveEvent.clientX;
+                    }
+
+                    function onPointerEnd() {
+                        handle.classList.remove('is-dragging');
+                        handle.removeEventListener('pointermove', onPointerMove);
+                        handle.removeEventListener('pointerup', onPointerEnd);
+                        handle.removeEventListener('pointercancel', onPointerEnd);
+                    }
+
+                    handle.addEventListener('pointermove', onPointerMove);
+                    handle.addEventListener('pointerup', onPointerEnd);
+                    handle.addEventListener('pointercancel', onPointerEnd);
+                });
+
+                handle.addEventListener('keydown', function (event) {
+                    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+                    event.preventDefault();
+                    resizeBy(event.key === 'ArrowRight' ? 12 : -12);
+                });
+            });
+
+            applyWidths();
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeResizableTables);
+    } else {
+        initializeResizableTables();
+    }
+})();
+
 // ***************************************
 // * APPLICATION TYPE
 // ***************************************

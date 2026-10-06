@@ -229,7 +229,7 @@
 
         <div class="main-container">
             <section class="kpi-row" aria-label="Draft application metrics" style="grid-template-columns: minmax(240px, 320px); height: auto; min-height: 110px;">
-                <article class="kpi-card kpi-card--highlight">
+                <article class="kpi-card">
                     <div class="kpi-card__head">
                         <span class="kpi-card__label">Total Draft Applications</span>
                         <i class="fa-regular fa-file-lines kpi-card__trend-icon" aria-hidden="true"></i>

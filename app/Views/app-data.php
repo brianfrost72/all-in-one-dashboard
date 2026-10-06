@@ -1437,7 +1437,7 @@
                         </div>
                     </header>
 
-                    <div class="borrower-ocr-info">
+                    <div class="info-banner">
                         <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
                         <div>
                             <strong>Document OCR is processed automatically</strong>
@@ -2108,7 +2108,154 @@
                             <small id="managementOwnershipMessage">If shareholder rows are added, total ownership must equal 100%.</small>
                         </div>
 
-                        <div class="management-rows" id="managementRows"></div>
+                        <div class="management-rows" id="managementRows">
+
+                            <!-- First management/shareholder row is rendered in PHP for backend clarity. -->
+                            <article class="management-person-card" data-management-row data-management-index="0">
+                                <div class="management-person-card__header">
+                                    <div class="management-person-card__title">
+                                        <span class="management-person-card__number">1</span>
+                                        <span>Management / Shareholder Person 1</span>
+                                    </div>
+
+                                    <button class="management-remove-button" type="button" data-management-remove disabled>
+                                        <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
+                                        Remove
+                                    </button>
+                                </div>
+
+                                <div class="related-party-grid management-person-grid">
+                                    <div class="related-party-field">
+                                        <label>1. Full Name (as per ID Card) <span>*</span></label>
+                                        <input data-management-field="name" name="management[0][name]" type="text" maxlength="100" required placeholder="Enter full name">
+                                    </div>
+
+                                    <div class="related-party-field">
+                                        <label>2. NIK <span>*</span></label>
+                                        <input data-management-field="nik" name="management[0][nik]" type="text" inputmode="numeric" minlength="16" maxlength="16" pattern="[0-9]{16}" required placeholder="16-digit NIK">
+                                    </div>
+
+                                    <div class="related-party-field">
+                                        <label>3. Position / Role <span>*</span></label>
+                                        <select data-management-field="role" name="management[0][role]" required>
+                                            <option value="">Select position...</option>
+                                            <option value="president_director">President Director</option>
+                                            <option value="director">Director</option>
+                                            <option value="president_commissioner">President Commissioner</option>
+                                            <option value="commissioner">Commissioner</option>
+                                            <option value="shareholder">Shareholder</option>
+                                            <option value="active_partner">Active Partner</option>
+                                            <option value="passive_partner">Passive Partner</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="related-party-field management-share-field is-disabled" data-management-share-field>
+                                        <label>4. Share Ownership (%) <span data-management-ownership-required hidden>*</span></label>
+                                        <div class="related-party-money-input">
+                                            <input data-management-field="ownership" name="management[0][ownership]" type="number" min="0" max="100" step="0.01" placeholder="0" disabled>
+                                            <span>%</span>
+                                        </div>
+                                        <small data-management-share-note>Only required when Position / Role is Shareholder.</small>
+                                    </div>
+
+                                    <div class="related-party-field">
+                                        <label>5. Mobile Number <span>*</span></label>
+                                        <input data-management-field="phone" name="management[0][phone]" type="tel" inputmode="numeric" required placeholder="Mobile number">
+                                    </div>
+
+                                    <div class="related-party-field related-party-field--span-2 management-address-field">
+                                        <label>6. Address <span>*</span></label>
+                                        <textarea data-management-field="address" name="management[0][address]" rows="3" required placeholder="Enter residential address"></textarea>
+                                    </div>
+
+                                    <div class="related-party-field related-party-field--span-2 management-guarantee-field">
+                                        <label>7. Personal Guarantee <span>*</span></label>
+                                        <select data-management-field="guarantee" name="management[0][guarantee]" required>
+                                            <option value="">Select personal guarantee...</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        <small>Yes = automatically included in identity &amp; background checking.</small>
+                                    </div>
+                                </div>
+                            </article>
+
+                        </div>
+
+                        <!--
+                            PHP-owned markup source for additional management/shareholder rows.
+                            JavaScript only clones, binds behavior, and reindexes backend field names.
+                        -->
+                        <template id="managementRowTemplate">
+                            <article class="management-person-card" data-management-row data-management-index="0">
+                                <div class="management-person-card__header">
+                                    <div class="management-person-card__title">
+                                        <span class="management-person-card__number">1</span>
+                                        <span>Management / Shareholder Person 1</span>
+                                    </div>
+
+                                    <button class="management-remove-button" type="button" data-management-remove>
+                                        <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
+                                        Remove
+                                    </button>
+                                </div>
+
+                                <div class="related-party-grid management-person-grid">
+                                    <div class="related-party-field">
+                                        <label>1. Full Name (as per ID Card) <span>*</span></label>
+                                        <input data-management-field="name" name="management[0][name]" type="text" maxlength="100" required placeholder="Enter full name">
+                                    </div>
+
+                                    <div class="related-party-field">
+                                        <label>2. NIK <span>*</span></label>
+                                        <input data-management-field="nik" name="management[0][nik]" type="text" inputmode="numeric" minlength="16" maxlength="16" pattern="[0-9]{16}" required placeholder="16-digit NIK">
+                                    </div>
+
+                                    <div class="related-party-field">
+                                        <label>3. Position / Role <span>*</span></label>
+                                        <select data-management-field="role" name="management[0][role]" required>
+                                            <option value="">Select position...</option>
+                                            <option value="president_director">President Director</option>
+                                            <option value="director">Director</option>
+                                            <option value="president_commissioner">President Commissioner</option>
+                                            <option value="commissioner">Commissioner</option>
+                                            <option value="shareholder">Shareholder</option>
+                                            <option value="active_partner">Active Partner</option>
+                                            <option value="passive_partner">Passive Partner</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="related-party-field management-share-field is-disabled" data-management-share-field>
+                                        <label>4. Share Ownership (%) <span data-management-ownership-required hidden>*</span></label>
+                                        <div class="related-party-money-input">
+                                            <input data-management-field="ownership" name="management[0][ownership]" type="number" min="0" max="100" step="0.01" placeholder="0" disabled>
+                                            <span>%</span>
+                                        </div>
+                                        <small data-management-share-note>Only required when Position / Role is Shareholder.</small>
+                                    </div>
+
+                                    <div class="related-party-field">
+                                        <label>5. Mobile Number <span>*</span></label>
+                                        <input data-management-field="phone" name="management[0][phone]" type="tel" inputmode="numeric" required placeholder="Mobile number">
+                                    </div>
+
+                                    <div class="related-party-field related-party-field--span-2 management-address-field">
+                                        <label>6. Address <span>*</span></label>
+                                        <textarea data-management-field="address" name="management[0][address]" rows="3" required placeholder="Enter residential address"></textarea>
+                                    </div>
+
+                                    <div class="related-party-field related-party-field--span-2 management-guarantee-field">
+                                        <label>7. Personal Guarantee <span>*</span></label>
+                                        <select data-management-field="guarantee" name="management[0][guarantee]" required>
+                                            <option value="">Select personal guarantee...</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        <small>Yes = automatically included in identity &amp; background checking.</small>
+                                    </div>
+                                </div>
+                            </article>
+                        </template>
                     </section>
 
                     <footer class="new-app-page-actions">
@@ -2170,11 +2317,6 @@
                                 certificate details, and appraisal-linked values.
                             </p>
                         </div>
-
-                        <span class="collateral-header-badge">
-                            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-                            M02.6 Collateral
-                        </span>
                     </header>
 
                     <div class="collateral-step-stack" id="collateralStepRoot">
@@ -2185,7 +2327,7 @@
                                 <strong>Multiple collateral assets are supported</strong>
                                 <p>
                                     Add each collateral separately. Market Value and Liquidation Value remain read-only
-                                    until appraisal data is returned from M03.3.
+                                    until appraisal data is returned.
                                 </p>
                             </div>
                         </div>
@@ -2398,7 +2540,7 @@
                                                     <span>Rp</span>
                                                     <input data-collateral-field="appraisal_market_value" name="collateral[0][appraisal_market_value]" type="text" value="" placeholder="Pending appraisal" readonly>
                                                 </div>
-                                                <small>Read-only · linked from M03.3.</small>
+                                                <small>Read-only</small>
                                             </div>
 
                                             <div class="collateral-field collateral-auto-value">

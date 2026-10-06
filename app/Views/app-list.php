@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -244,7 +244,7 @@
                     </div>
                 </article>
 
-                <article class="kpi-card" tabindex="0">
+                <a class="kpi-card" href="<?= base_url('drafts') ?>">
                     <div class="kpi-card__head">
                         <span class="kpi-card__label">Drafts</span>
                         <i class="fa-solid fa-arrow-trend-up kpi-card__trend-icon" aria-hidden="true"></i>
@@ -253,7 +253,7 @@
                     <div class="kpi-card__meta">
                         <span>Finish your drafts</span>
                     </div>
-                </article>
+                </a>
 
                 <article class="kpi-card" tabindex="0">
                     <div class="kpi-card__head">
@@ -300,7 +300,7 @@
                     </div>
                 </article>
 
-                <article class="kpi-card" tabindex="0">
+                <a class="kpi-card" href="<?= base_url('returned-app') ?>">
                     <div class="kpi-card__head">
                         <span class="kpi-card__label">Returned</span>
                         <i class="fa-solid fa-arrow-trend-up kpi-card__trend-icon" aria-hidden="true"></i>
@@ -310,7 +310,7 @@
                         <span>Need to</span>
                         <strong>Review</strong>
                     </div>
-                </article>
+                </a>
             </section>
 
             <section class="app-list-filterbar" aria-label="Application filters">
@@ -438,34 +438,34 @@
             <!-- ======================================================
      APPLICATION LIST TABLE
      ====================================================== -->
-            <section class="app-list-table-card" aria-label="Loan application list">
+            <section class="panel" aria-label="Loan application list">
 
-                <div class="app-list-table-wrap">
+                <div class="table-wrap">
 
-                    <table class="app-list-table">
+                    <table class="data-table">
 
                         <thead>
                             <tr>
-                                <th class="app-list-col-check">
+                                <th>
                                     <input
                                         type="checkbox"
                                         class="app-list-checkbox"
                                         aria-label="Select all applications">
                                 </th>
 
-                                <th class="app-list-col-app">App No.</th>
-                                <th class="app-list-col-date">Date</th>
-                                <th class="app-list-col-borrower">Borrower</th>
-                                <th class="app-list-col-type">Type</th>
-                                <th class="app-list-col-branch">Branch</th>
-                                <th class="app-list-col-marketing">Marketing</th>
-                                <th class="app-list-col-requested">Requested</th>
-                                <th class="app-list-col-tenor">Tenor</th>
-                                <th class="app-list-col-scheme">Scheme</th>
-                                <th class="app-list-col-collateral">Collateral</th>
-                                <th class="app-list-col-status">Status / Owner</th>
-                                <th class="app-list-col-sla">SLA</th>
-                                <th class="app-list-col-action">Action</th>
+                                <th>App No.</th>
+                                <th>Date</th>
+                                <th>Borrower</th>
+                                <th>Type</th>
+                                <th>Branch</th>
+                                <th>Marketing</th>
+                                <th>Requested</th>
+                                <th>Tenor</th>
+                                <th>Scheme</th>
+                                <th>Collateral</th>
+                                <th>Status / Owner</th>
+                                <th>SLA</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
 
@@ -477,13 +477,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-JKT-202609-0142">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-JKT-202609-0142
                                 </td>
 
                                 <td>16 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     PT Sinar Abadi
                                 </td>
 
@@ -491,7 +491,7 @@
                                 <td>Jakarta</td>
                                 <td>Sarah Wijaya</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 750,000,000
                                 </td>
 
@@ -515,7 +515,7 @@
                                 <td>
                                     <div class="app-list-actions">
                                         <button type="button">View</button>
-                                        <button type="button">Review</button>
+                                        <button type="button">Open</button>
                                     </div>
                                 </td>
                             </tr>
@@ -527,13 +527,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-BDG-202609-0138">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-BDG-202609-0138
                                 </td>
 
                                 <td>16 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     Budi Santoso
                                 </td>
 
@@ -541,7 +541,7 @@
                                 <td>Bandung</td>
                                 <td>Ahmad Fauzi</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 350,000,000
                                 </td>
 
@@ -577,13 +577,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-JKT-202609-0131">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-JKT-202609-0131
                                 </td>
 
                                 <td>15 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     CV Maju Bersama
                                 </td>
 
@@ -591,7 +591,7 @@
                                 <td>Jakarta</td>
                                 <td>Sarah Wijaya</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 500,000,000
                                 </td>
 
@@ -615,7 +615,7 @@
                                 <td>
                                     <div class="app-list-actions">
                                         <button type="button">View</button>
-                                        <button type="button">Revise</button>
+                                        <button type="button">Open</button>
                                     </div>
                                 </td>
                             </tr>
@@ -627,13 +627,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-SBY-202609-0127">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-SBY-202609-0127
                                 </td>
 
                                 <td>14 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     PT Karya Utama
                                 </td>
 
@@ -641,7 +641,7 @@
                                 <td>Surabaya</td>
                                 <td>Rizki Pratama</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 1,200,000,000
                                 </td>
 
@@ -665,6 +665,7 @@
                                 <td>
                                     <div class="app-list-actions">
                                         <button type="button">View</button>
+                                        <button type="button">Open</button>
                                     </div>
                                 </td>
                             </tr>
@@ -676,13 +677,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-JKT-202609-0119">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-JKT-202609-0119
                                 </td>
 
                                 <td>13 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     Dewi Lestari
                                 </td>
 
@@ -690,7 +691,7 @@
                                 <td>Jakarta</td>
                                 <td>Ahmad Fauzi</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 280,000,000
                                 </td>
 
@@ -714,6 +715,7 @@
                                 <td>
                                     <div class="app-list-actions">
                                         <button type="button">View</button>
+                                        <button type="button">Open</button>
                                     </div>
                                 </td>
                             </tr>
@@ -725,13 +727,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-MDN-202609-0115">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-MDN-202609-0115
                                 </td>
 
                                 <td>12 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     PT Nusantara Jaya
                                 </td>
 
@@ -739,7 +741,7 @@
                                 <td>Medan</td>
                                 <td>Hendra Gunawan</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 2,500,000,000
                                 </td>
 
@@ -753,11 +755,12 @@
                                     </span>
                                 </td>
 
-                                <td class="app-list-table__empty">—</td>
+                                <td>—</td>
 
                                 <td>
                                     <div class="app-list-actions">
                                         <button type="button">View</button>
+                                        <button type="button">Open</button>
                                     </div>
                                 </td>
                             </tr>
@@ -769,13 +772,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-JKT-202609-0108">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-JKT-202609-0108
                                 </td>
 
                                 <td>11 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     Rina Permata
                                 </td>
 
@@ -783,7 +786,7 @@
                                 <td>Jakarta</td>
                                 <td>Sarah Wijaya</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 180,000,000
                                 </td>
 
@@ -797,11 +800,12 @@
                                     </span>
                                 </td>
 
-                                <td class="app-list-table__empty">—</td>
+                                <td>—</td>
 
                                 <td>
                                     <div class="app-list-actions">
                                         <button type="button">View</button>
+                                        <button type="button">Open</button>
                                     </div>
                                 </td>
                             </tr>
@@ -813,13 +817,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-BDG-202609-0101">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-BDG-202609-0101
                                 </td>
 
                                 <td>10 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     PT Cahaya Mandiri
                                 </td>
 
@@ -827,7 +831,7 @@
                                 <td>Bandung</td>
                                 <td>Ahmad Fauzi</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 950,000,000
                                 </td>
 
@@ -841,12 +845,12 @@
                                     </span>
                                 </td>
 
-                                <td class="app-list-table__empty">—</td>
+                                <td>—</td>
 
                                 <td>
                                     <div class="app-list-actions">
                                         <button type="button">View</button>
-                                        <button type="button">Resubmit</button>
+                                        <button type="button">Open</button>
                                     </div>
                                 </td>
                             </tr>
@@ -858,13 +862,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-SBY-202609-0098">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-SBY-202609-0098
                                 </td>
 
                                 <td>09 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     Agus Setiawan
                                 </td>
 
@@ -872,7 +876,7 @@
                                 <td>Surabaya</td>
                                 <td>Rizki Pratama</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 420,000,000
                                 </td>
 
@@ -886,16 +890,12 @@
                                     </span>
                                 </td>
 
-                                <td class="app-list-table__empty">—</td>
+                                <td>—</td>
 
                                 <td>
                                     <div class="app-list-actions">
-                                        <button type="button">Edit</button>
-                                        <button
-                                            type="button"
-                                            class="app-list-action--danger">
-                                            Delete
-                                        </button>
+                                        <button type="button">View</button>
+                                        <button type="button">Open</button>
                                     </div>
                                 </td>
                             </tr>
@@ -907,13 +907,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-JKT-202609-0092">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-JKT-202609-0092
                                 </td>
 
                                 <td>08 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     CV Berkah Sejahtera
                                 </td>
 
@@ -921,7 +921,7 @@
                                 <td>Jakarta</td>
                                 <td>Hendra Gunawan</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 680,000,000
                                 </td>
 
@@ -945,6 +945,7 @@
                                 <td>
                                     <div class="app-list-actions">
                                         <button type="button">View</button>
+                                        <button type="button">Open</button>
                                     </div>
                                 </td>
                             </tr>
@@ -956,13 +957,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-MDN-202609-0085">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-MDN-202609-0085
                                 </td>
 
                                 <td>07 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     PT Mega Sentosa
                                 </td>
 
@@ -970,7 +971,7 @@
                                 <td>Medan</td>
                                 <td>Ahmad Fauzi</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 3,200,000,000
                                 </td>
 
@@ -984,12 +985,12 @@
                                     </span>
                                 </td>
 
-                                <td class="app-list-table__empty">—</td>
+                                <td>—</td>
 
                                 <td>
                                     <div class="app-list-actions">
                                         <button type="button">View</button>
-                                        <button type="button">Appeal</button>
+                                        <button type="button">Open</button>
                                     </div>
                                 </td>
                             </tr>
@@ -1001,13 +1002,13 @@
                                     <input type="checkbox" class="app-list-checkbox" aria-label="Select LOS-JKT-202609-0078">
                                 </td>
 
-                                <td class="app-list-table__app">
+                                <td>
                                     LOS-JKT-202609-0078
                                 </td>
 
                                 <td>06 Sep 2026</td>
 
-                                <td class="app-list-table__borrower">
+                                <td>
                                     Siti Nurhaliza
                                 </td>
 
@@ -1015,7 +1016,7 @@
                                 <td>Jakarta</td>
                                 <td>Sarah Wijaya</td>
 
-                                <td class="app-list-table__amount">
+                                <td>
                                     Rp 150,000,000
                                 </td>
 
@@ -1029,11 +1030,12 @@
                                     </span>
                                 </td>
 
-                                <td class="app-list-table__empty">—</td>
+                                <td>—</td>
 
                                 <td>
                                     <div class="app-list-actions">
                                         <button type="button">View</button>
+                                        <button type="button">Open</button>
                                     </div>
                                 </td>
                             </tr>
@@ -1048,60 +1050,60 @@
                 <!-- ======================================================
          TABLE FOOTER
          ====================================================== -->
-                <footer class="app-list-table-footer">
+                <footer class="table-footer">
 
-                    <p class="app-list-table-footer__count">
+                    <p>
                         Showing <strong>1–12</strong> of
                         <strong>249</strong> applications
                     </p>
 
 
                     <nav
-                        class="app-list-pagination"
+                        class="table-pagination"
                         aria-label="Application table pagination">
 
                         <button
                             type="button"
-                            class="app-list-pagination__nav"
+                            class="btn btn-secondary table-pagination__button"
                             aria-label="Previous page">
                             <i class="fa-solid fa-chevron-left"></i>
                         </button>
 
                         <button
                             type="button"
-                            class="app-list-pagination__page is-active">
+                            class="btn btn-dark table-pagination__button">
                             1
                         </button>
 
                         <button
                             type="button"
-                            class="app-list-pagination__page">
+                            class="btn btn-secondary table-pagination__button">
                             2
                         </button>
 
                         <button
                             type="button"
-                            class="app-list-pagination__page">
+                            class="btn btn-secondary table-pagination__button">
                             3
                         </button>
 
                         <button
                             type="button"
-                            class="app-list-pagination__page">
+                            class="btn btn-secondary table-pagination__button">
                             4
                         </button>
 
-                        <span class="app-list-pagination__dots">…</span>
+                        <span aria-hidden="true">…</span>
 
                         <button
                             type="button"
-                            class="app-list-pagination__page">
+                            class="btn btn-secondary table-pagination__button">
                             21
                         </button>
 
                         <button
                             type="button"
-                            class="app-list-pagination__nav"
+                            class="btn btn-secondary table-pagination__button"
                             aria-label="Next page">
                             <i class="fa-solid fa-chevron-right"></i>
                         </button>
@@ -1109,19 +1111,19 @@
                     </nav>
 
 
-                    <div class="app-list-table-footer__rows">
+                    <label class="table-footer__rows">
 
-                        <label for="appListRows">
+                        <span>
                             Rows per page:
-                        </label>
+                        </span>
 
-                        <select id="appListRows">
+                        <select class="select" id="appListRows">
                             <option selected>12</option>
                             <option>24</option>
                             <option>48</option>
                         </select>
 
-                    </div>
+                    </label>
 
                 </footer>
 

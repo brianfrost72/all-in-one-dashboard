@@ -124,7 +124,7 @@
 
         </div>
 
-        <a href="collateral-appraisal.php" class="sidebar-menu-item">
+        <a href="#" class="sidebar-menu-item menu-parent" data-submenu="collateralAppraisalSubmenu">
             <span class="menu-icon">
                 <i class="fa-solid fa-shield-halved"></i>
             </span>
@@ -133,8 +133,30 @@
                 Collateral Appraisal
             </span>
 
-            <span class="menu-indicator"></span>
+            <span class="menu-arrow">
+                <i class="fa-solid fa-chevron-down"></i>
+            </span>
         </a>
+
+        <div class="sidebar-submenu" id="collateralAppraisalSubmenu">
+            <a href="<?= base_url('appraisal-list') ?>" class="sidebar-submenu-item">
+                <span class="submenu-icon">
+                    <i class="fa-solid fa-list"></i>
+                </span>
+                <span class="submenu-text">
+                    Appraisal Task List
+                </span>
+            </a>
+
+            <a href="<?= base_url('draft-appraisal') ?>" class="sidebar-submenu-item">
+                <span class="submenu-icon">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </span>
+                <span class="submenu-text">
+                    Draft Appraisal
+                </span>
+            </a>
+        </div>
 
         <a href="credit-analysis.php" class="sidebar-menu-item">
             <span class="menu-icon">
